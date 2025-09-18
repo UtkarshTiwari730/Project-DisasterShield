@@ -1,0 +1,9 @@
+{
+  "checklist": [
+    { "id": 1, "text": "Store emergency water supply" },
+    { "id": 2, "text": "Prepare first aid kit" },
+    { "id": 3, "text": "Create family emergency plan" },
+    { "id": 4, "text": "Secure important documents" },
+    { "id": 5, "text": "Charge mobile devices" }
+  ]
+}

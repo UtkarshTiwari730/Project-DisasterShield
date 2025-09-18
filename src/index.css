@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Responsive styles for mobile and tablet */
+@media (max-width: 768px) {
+  /* Navigation responsive */
+  nav div {
+    flex-direction: column !important;
+  }
+  nav div div {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  nav button {
+    font-size: 14px !important;
+    padding: 6px 12px !important;
+    margin: 2px !important;
+  }
+
+  /* Main content padding */
+  main {
+    padding: 10px !important;
+  }
+
+  /* Card containers */
+  div[style*="display: flex"][style*="justify-content: center"][style*="gap: 30px"] {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  div[style*="background-color: white"][style*="box-shadow"] {
+    width: 100% !important;
+    max-width: 350px !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Weather input */
+  input[type="text"] {
+    width: 250px !important;
+  }
+
+  /* Forecast */
+  div[style*="display: flex"][style*="justify-content: center"][style*="gap: 20px"] {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  div[style*="min-width: 150px"] {
+    min-width: 120px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Smaller screens */
+  h1 {
+    font-size: 24px !important;
+  }
+  h2 {
+    font-size: 20px !important;
+  }
+  nav h1 {
+    font-size: 18px !important;
+  }
+  nav button {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+  }
+
+  /* Weather details */
+  div[style*="display: flex"][style*="justify-content: center"][style*="align-items: center"] {
+    flex-direction: column !important;
+  }
+  div[style*="margin-left: 20px"] {
+    margin-left: 0 !important;
+    margin-top: 20px !important;
+  }
+
+  /* Input smaller */
+  input[type="text"] {
+    width: 180px !important;
+  }
+}
