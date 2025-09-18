@@ -5,7 +5,7 @@ import EmergencyContacts from "./component/EmergencyContacts.jsx";
 import Map from "./component/Map.jsx";
 import AIChat from "./component/AIChat.jsx";
 import Weather from "./component/Weather.jsx";
-import DrillAnalytics from "./component/DrillAnalytics.jsx";
+import MockDrill from "./component/MockDrill.jsx";
 import { trackPageView, trackButtonClick } from "./analytics.js";
 import { ThemeProvider, useTheme } from "./ThemeContext.jsx";
 
@@ -47,7 +47,7 @@ function AppContent() {
     if (view === "map") return <Map setView={setView} />;
     if (view === "ai" && isLoggedIn) return <AIChat setView={setView} />;
     if (view === "weather" && isLoggedIn) return <Weather setView={setView} />;
-    if (view === "drill") return <DrillAnalytics setView={setView} />;
+    if (view === "drill") return <MockDrill setView={setView} />;
     // if not logged in and trying to access ai or weather, fallback to home
     if ((view === "ai" || view === "weather") && !isLoggedIn) return <Home setView={setView} />;
   };

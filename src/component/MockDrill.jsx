@@ -62,7 +62,7 @@ function MockDrill({ setView }) {
             fontSize: '36px',
             margin: 0
           }}>
-            Mock Analytics
+            MockDrill
           </h1>
           <button
             onClick={() => setView("home")}
@@ -92,7 +92,7 @@ function MockDrill({ setView }) {
             marginBottom: '20px',
             fontSize: '28px'
           }}>
-            Mock Analytics Video
+            MockDrill Video
           </h2>
           <div style={{
             position: 'relative',
@@ -148,7 +148,7 @@ function MockDrill({ setView }) {
             fontSize: '28px',
             textAlign: 'center'
           }}>
-            Mock Analytics Scenarios
+            MockDrill Scenarios
           </h2>
           <div style={{
             display: 'grid',
@@ -197,6 +197,18 @@ function MockDrill({ setView }) {
                     </li>
                   ))}
                 </ul>
+                {option.disaster === "Flood" && (
+                  <p style={{ marginTop: '10px', fontSize: '14px' }}>
+                    <a
+                      href="https://www.ready.gov/floods"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: '#007bff', textDecoration: 'underline' }}
+                    >
+                      More flood preparedness info
+                    </a>
+                  </p>
+                )}
                 <button
                   onClick={() => {
                     if (option.disaster === "Earthquake") {
@@ -264,20 +276,52 @@ function MockDrill({ setView }) {
                   width: '30px',
                   height: '30px',
                   cursor: 'pointer',
-                  fontSize: '16px'
+                  fontSize: '16px',
+                  zIndex: 1001
                 }}
               >
                 ×
               </button>
-              <img
-                src="https://c8.alamy.com/comp/2YET1MP/evacuation-drill-2YET1MP.jpg"
-                alt="Evacuation Drill"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  maxHeight: '70vh'
-                }}
-              />
+              <div style={{
+                position: 'relative',
+                paddingBottom: '56.25%',
+                height: 0,
+                overflow: 'hidden',
+                borderRadius: '10px',
+                boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+              }}>
+                <iframe
+                  title="Earthquake Drill Video"
+                  src="https://www.youtube.com/embed/avvBpyh1kdE"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%'
+                  }}
+                ></iframe>
+              </div>
+              <p style={{
+                color: '#666',
+                marginTop: '10px',
+                textAlign: 'center'
+              }}>
+                <a
+                  href="https://youtu.be/avvBpyh1kdE?si=szDMSl6sgFCecOAT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: '#007bff',
+                    textDecoration: 'none'
+                  }}
+                >
+                  Watch Full Video on YouTube
+                </a>
+              </p>
             </div>
           </div>
         )}
@@ -322,15 +366,46 @@ function MockDrill({ setView }) {
               >
                 ×
               </button>
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHlfHmeGPELoK4WgXaqZHfz3kUVxby0ypeSw&s"
-                alt="Flood Drill"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  maxHeight: '70vh'
-                }}
-              />
+              <div style={{
+                position: 'relative',
+                paddingBottom: '56.25%',
+                height: 0,
+                overflow: 'hidden',
+                borderRadius: '10px',
+                boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+              }}>
+                <iframe
+                  title="Flood Drill Video"
+                  src="https://www.youtube.com/embed/Dq1ipSaft6c"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%'
+                  }}
+                ></iframe>
+              </div>
+              <p style={{
+                color: '#666',
+                marginTop: '10px',
+                textAlign: 'center'
+              }}>
+                <a
+                  href="https://youtu.be/Dq1ipSaft6c?si=rKrzReJUcgcEvtrQ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: '#007bff',
+                    textDecoration: 'none'
+                  }}
+                >
+                  Watch Full Video on YouTube
+                </a>
+              </p>
             </div>
           </div>
         )}
@@ -375,15 +450,46 @@ function MockDrill({ setView }) {
               >
                 ×
               </button>
-              <img
-                src="https://i.ytimg.com/vi/-uMpndVMPuc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAjditn1E-XV8Z4rwUa1Jx7kd-r0Q"
-                alt="Hurricane Drill"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  maxHeight: '70vh'
-                }}
-              />
+              <div style={{
+                position: 'relative',
+                paddingBottom: '56.25%',
+                height: 0,
+                overflow: 'hidden',
+                borderRadius: '10px',
+                boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+              }}>
+                <iframe
+                  title="Hurricane Drill Video"
+                  src="https://www.youtube.com/embed/s83bnlD_P4c"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%'
+                  }}
+                ></iframe>
+              </div>
+              <p style={{
+                color: '#666',
+                marginTop: '10px',
+                textAlign: 'center'
+              }}>
+                <a
+                  href="https://youtu.be/s83bnlD_P4c?si=byetVZBmWWCqM3IF"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: '#007bff',
+                    textDecoration: 'none'
+                  }}
+                >
+                  Watch Full Video on YouTube
+                </a>
+              </p>
             </div>
           </div>
         )}
@@ -428,15 +534,46 @@ function MockDrill({ setView }) {
               >
                 ×
               </button>
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaxJJtMj2D99YO0im_6zYTrk4YQM-c2MufRQ&s"
-                alt="Wildfire Drill"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  maxHeight: '70vh'
-                }}
-              />
+              <div style={{
+                position: 'relative',
+                paddingBottom: '56.25%',
+                height: 0,
+                overflow: 'hidden',
+                borderRadius: '10px',
+                boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+              }}>
+                <iframe
+                  title="Wildfire Drill Video"
+                  src="https://www.youtube.com/embed/4uE3PxSqY7M"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%'
+                  }}
+                ></iframe>
+              </div>
+              <p style={{
+                color: '#666',
+                marginTop: '10px',
+                textAlign: 'center'
+              }}>
+                <a
+                  href="https://youtu.be/4uE3PxSqY7M?si=OzfYvVaaTQ91PyRw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: '#007bff',
+                    textDecoration: 'none'
+                  }}
+                >
+                  Watch Full Video on YouTube
+                </a>
+              </p>
             </div>
           </div>
         )}

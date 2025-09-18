@@ -105,9 +105,9 @@ function AIChat({ setView }) {
       } else if (e.key === 'Escape') {
         setSuggestions([]);
         setSelectedIndex(-1);
-      } else if (e.key === 'Enter') {
-        handleSend();
-      }
+    } else if (e.key === 'Enter') {
+      handleSend(input);
+    }
     } else if (e.key === 'Enter') {
       handleSend();
     }
