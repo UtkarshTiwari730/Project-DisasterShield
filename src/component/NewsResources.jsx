@@ -65,22 +65,6 @@ function NewsResources() {
         ))}
       </ul>
 
-      <h2 style={{ color: "gray", marginTop: "40px", marginBottom: "20px" }}> Drill Analytics</h2>
-      <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "10px" }}>
-        <iframe
-          title="Drill Analytics Video"
-          src="https://www.youtube.com/embed/w78JrJrio-U"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-        ></iframe>
-      </div>
-      <p style={{ color: "white", marginTop: "10px" }}>
-        <a href="https://www.youtube.com/watch?v=w78JrJrio-U" target="_blank" rel="noopener noreferrer" style={{ color: "#ffd700" }}>
-          Watch Full Video
-        </a>
-      </p>
     </div>
   );
 }

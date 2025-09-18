@@ -6,6 +6,7 @@ import EmergencyContacts from "./component/EmergencyContacts.jsx";
 import Map from "./component/Map.jsx";
 import AIChat from "./component/AIChat.jsx";
 import Weather from "./component/Weather.jsx";
+import DrillAnalytics from "./component/DrillAnalytics.jsx";
 import { trackPageView, trackButtonClick } from "./analytics.js";
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
     if (view === "map") return <Map setView={setView} />;
     if (view === "ai") return <AIChat setView={setView} />;
     if (view === "weather") return <Weather setView={setView} />;
+    if (view === "drill") return <DrillAnalytics setView={setView} />;
   };
 
   return (
@@ -186,6 +188,22 @@ function App() {
               }}
             >
               Weather
+            </button>
+            <button
+              onClick={() => { trackButtonClick('Drill Analytics Navigation'); setView("drill"); }}
+              style={{
+                backgroundColor: view === "drill" ? '#dc3545' : 'transparent',
+                color: 'white',
+                border: '1px solid white',
+                borderRadius: '5px',
+                padding: '8px 16px',
+                margin: '0 5px',
+                cursor: 'pointer',
+                fontSize: '16px',
+                transition: 'background-color 0.3s'
+              }}
+            >
+              Drill Analytics
             </button>
           </div>
         </div>

@@ -471,6 +471,65 @@ function Home({ setView }) {
             </p>
           </div>
         </div>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '30px',
+          flexWrap: 'wrap',
+          marginTop: '40px'
+        }}>
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '15px',
+            boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
+            padding: '40px',
+            maxWidth: '350px',
+            width: '100%',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+          onClick={() => setView("drill")}
+          onMouseEnter={(e) => {
+            e.target.style.transform = 'translateY(-10px) scale(1.05)';
+            e.target.style.boxShadow = '0 15px 30px rgba(0,0,0,0.3)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = 'translateY(0) scale(1)';
+            e.target.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
+          }}
+          >
+            <div style={{
+              position: 'absolute',
+              top: '-50%',
+              left: '-50%',
+              width: '200%',
+              height: '200%',
+              background: 'linear-gradient(45deg, #6f42c1, #5a32a3)',
+              opacity: 0.1,
+              transform: 'rotate(45deg)',
+              transition: 'all 0.3s'
+            }}></div>
+            <h3 style={{
+              color: '#6f42c1',
+              marginBottom: '15px',
+              fontSize: '28px',
+              position: 'relative',
+              zIndex: 1
+            }}>
+               Drill Analytics
+            </h3>
+            <p style={{
+              color: '#666',
+              fontSize: '16px',
+              position: 'relative',
+              zIndex: 1
+            }}>
+              Access drill analytics videos and learn survival options for various disasters.
+            </p>
+          </div>
+        </div>
         <NewsResources />
       </div>
     </div>
