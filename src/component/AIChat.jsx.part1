@@ -1,0 +1,32 @@
+if (!textToSend.trim()) return;
+
+    const userMessage = { text: textToSend, sender: "user" };
+    setMessages(prev => [...prev, userMessage]);
+    trackButtonClick('AI Chat Send Message');
+
+    // Generate mock response
+    const lowerInput = textToSend.toLowerCase();
+    let response = mockResponses.default;
+    for (const key in mockResponses) {
+      if (lowerInput.includes(key)) {
+        response = mockResponses[key];
+        break;
+      }
+    }
+
+    const aiMessage = { text: response, sender: "ai" };
+    setTimeout(() => {
+      setMessages(prev => [...prev, aiMessage]);
+    }, 1000); // Simulate delay
+
+    if (messageText === undefined) {
+      setInput("");
+      setSuggestions([]);
+      setSelectedIndex(-1);
+    }
+  };
+=======
+    "tsunami": {
+      en: "🌊 Tsunami warning: Move to higher ground immediately. Avoid the beach and low-lying coastal areas. Follow evacuation routes and listen to emergency broadcasts. Do not return until authorities declare it safe. Prepare an emergency kit and stay informed. Stay alert for multiple waves. Safety first! 🌊",
+      hi: "🌊 सुनामी चेतावनी: तुरंत उच्च जमीन पर जाएं। समुद्र तट और निम्न-भूमि तटीय क्षेत्रों से बचें। निकासी मार्गों का पालन करें और आपातकालीन प्रसारण सुनें। जब तक अधिकारी सुरक्षित घोषित न करें, तब तक वापस न लौटें। एक आपातकालीन किट तैयार करें और सूचित रहें। कई लहरों के लिए सतर्क रहें। सुरक्षा पहले! 🌊"
+    },

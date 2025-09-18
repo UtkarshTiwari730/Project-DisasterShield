@@ -4,6 +4,9 @@ const mockResources = [
   { id: 1, title: "Disaster Preparedness Guide", url: "https://www.ready.gov/" },
   { id: 2, title: "Emergency Management Manual", url: "https://www.fema.gov/" },
   { id: 3, title: "First Aid Resources", url: "https://www.redcross.org/" },
+  { id: 4, title: "Wildfire Safety Tips", url: "https://www.nfpa.org/" },
+  { id: 5, title: "Earthquake Preparedness", url: "https://www.earthquakeauthority.com/" },
+  { id: 6, title: "Flood Insurance Information", url: "https://www.floodsmart.gov/" },
 ];
 
 function NewsResources() {
@@ -24,6 +27,9 @@ function NewsResources() {
           { id: 1, title: "Severe storms expected this weekend", url: "#", source: "Weather Channel" },
           { id: 2, title: "Flood warnings issued in several areas", url: "#", source: "Local News" },
           { id: 3, title: "Emergency drills scheduled for next month", url: "#", source: "City Council" },
+          { id: 4, title: "Heatwave advisory for the region", url: "#", source: "National Weather Service" },
+          { id: 5, title: "Volcano eruption monitoring active", url: "#", source: "Geological Survey" },
+          { id: 6, title: "Pandemic preparedness updates", url: "#", source: "Health Department" },
         ];
         setNews(mockNews);
       } catch (error) {

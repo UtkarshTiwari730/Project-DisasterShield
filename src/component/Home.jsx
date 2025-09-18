@@ -7,7 +7,7 @@ function Home({ setView }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const storedUser = sessionStorage.getItem('disasterUser');
+    const storedUser = localStorage.getItem('disasterUser');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
       setIsLoggedIn(true);
@@ -20,7 +20,7 @@ function Home({ setView }) {
       const userData = { username: loginForm.username, role: 'Emergency Responder' };
       setUser(userData);
       setIsLoggedIn(true);
-      sessionStorage.setItem('disasterUser', JSON.stringify(userData));
+      localStorage.setItem('disasterUser', JSON.stringify(userData));
     }
   };
 
@@ -55,7 +55,7 @@ function Home({ setView }) {
             marginBottom: '30px',
             fontSize: '28px'
           }}>
-             Disaster Management Login
+             Disaster Management
           </h1>
           <form onSubmit={handleLogin}>
             <input
@@ -159,7 +159,7 @@ function Home({ setView }) {
           margin: '0 auto 40px'
         }}>
           <b>Stay prepared and informed with our comprehensive disaster management tools.
-          Access checklists, send alerts, and coordinate responses effectively.</b>
+          Send alerts and coordinate responses effectively.</b>
         </p>
         <div style={{
           display: 'flex',
@@ -167,46 +167,7 @@ function Home({ setView }) {
           gap: '30px',
           flexWrap: 'wrap'
         }}>
-          <div style={{
-            backgroundColor: 'white',
-            borderRadius: '15px',
-            boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
-            padding: '40px',
-            maxWidth: '350px',
-            width: '100%',
-            cursor: 'pointer'
-          }}
-          onClick={() => setView("checklist")}
-          >
-            <div style={{
-              position: 'absolute',
-              top: '-50%',
-              left: '-50%',
-              width: '200%',
-              height: '200%',
-              background: 'linear-gradient(45deg, #667eea, #764ba2)',
-              opacity: 0.1,
-              transform: 'rotate(45deg)',
-              transition: 'all 0.3s'
-            }}></div>
-            <h3 style={{
-              color: '#667eea',
-              marginBottom: '15px',
-              fontSize: '28px',
-              position: 'relative',
-              zIndex: 1
-            }}>
-               Emergency Checklist
-            </h3>
-            <p style={{
-              color: '#666',
-              fontSize: '16px',
-              position: 'relative',
-              zIndex: 1
-            }}>
-              Access step-by-step emergency preparedness checklists to ensure you're ready for any situation.
-            </p>
-          </div>
+
           <div style={{
             backgroundColor: 'white',
             borderRadius: '15px',
@@ -470,14 +431,6 @@ function Home({ setView }) {
               View real-time disaster locations, affected areas, and emergency response information.
             </p>
           </div>
-        </div>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '30px',
-          flexWrap: 'wrap',
-          marginTop: '40px'
-        }}>
           <div style={{
             backgroundColor: 'white',
             borderRadius: '15px',
@@ -506,19 +459,19 @@ function Home({ setView }) {
               left: '-50%',
               width: '200%',
               height: '200%',
-              background: 'linear-gradient(45deg, #6f42c1, #5a32a3)',
+              background: 'linear-gradient(45deg, #e83e8c, #dc3545)',
               opacity: 0.1,
               transform: 'rotate(45deg)',
               transition: 'all 0.3s'
             }}></div>
             <h3 style={{
-              color: '#6f42c1',
+              color: '#e83e8c',
               marginBottom: '15px',
               fontSize: '28px',
               position: 'relative',
               zIndex: 1
             }}>
-               Drill Analytics
+               Mock Analytics
             </h3>
             <p style={{
               color: '#666',
@@ -526,10 +479,11 @@ function Home({ setView }) {
               position: 'relative',
               zIndex: 1
             }}>
-              Access drill analytics videos and learn survival options for various disasters.
+              Access mock drill scenarios, videos, and analytics for disaster preparedness training.
             </p>
           </div>
         </div>
+
         <NewsResources />
       </div>
     </div>

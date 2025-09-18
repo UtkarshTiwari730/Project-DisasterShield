@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Home from "./component/Home.jsx";
-import Checklist from "./component/Checklist.jsx";
 import AlertForm from "./component/AlertForm.jsx";
 import EmergencyContacts from "./component/EmergencyContacts.jsx";
 import Map from "./component/Map.jsx";
@@ -8,8 +7,10 @@ import AIChat from "./component/AIChat.jsx";
 import Weather from "./component/Weather.jsx";
 import DrillAnalytics from "./component/DrillAnalytics.jsx";
 import { trackPageView, trackButtonClick } from "./analytics.js";
+import { ThemeProvider, useTheme } from "./ThemeContext.jsx";
 
-function App() {
+function AppContent() {
+  const { isDarkMode, toggleTheme, colors } = useTheme();
   const [view, setView] = useState("home");
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -41,23 +42,26 @@ function App() {
 
   const renderView = () => {
     if (view === "home") return <Home setView={setView} />;
-    if (view === "checklist") return <Checklist setView={setView} />;
     if (view === "alert") return <AlertForm setView={setView} />;
     if (view === "contacts") return <EmergencyContacts setView={setView} />;
     if (view === "map") return <Map setView={setView} />;
-    if (view === "ai") return <AIChat setView={setView} />;
-    if (view === "weather") return <Weather setView={setView} />;
+    if (view === "ai" && isLoggedIn) return <AIChat setView={setView} />;
+    if (view === "weather" && isLoggedIn) return <Weather setView={setView} />;
     if (view === "drill") return <DrillAnalytics setView={setView} />;
+    // if not logged in and trying to access ai or weather, fallback to home
+    if ((view === "ai" || view === "weather") && !isLoggedIn) return <Home setView={setView} />;
   };
 
   return (
     <div style={{
       fontFamily: 'Arial, sans-serif',
       minHeight: '100vh',
-      backgroundColor: '#f8f9fa'
+      backgroundColor: colors.background,
+      color: colors.text,
+      transition: 'background-color 0.3s, color 0.3s'
     }}>
       <nav style={{
-        backgroundColor: '#343a40',
+        backgroundColor: colors.navBackground,
         padding: '15px 0',
         boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
       }}>
@@ -70,7 +74,7 @@ function App() {
           alignItems: 'center'
         }}>
           <h1 style={{
-            color: 'white',
+            color: colors.navText,
             margin: 0,
             fontSize: '24px'
           }}>
@@ -81,8 +85,8 @@ function App() {
               onClick={() => { trackButtonClick('Home Navigation'); setView("home"); }}
               style={{
                 backgroundColor: view === "home" ? '#dc3545' : 'transparent',
-                color: 'white',
-                border: '1px solid white',
+                color: colors.navText,
+                border: '1px solid ' + colors.navText,
                 borderRadius: '5px',
                 padding: '8px 16px',
                 margin: '0 5px',
@@ -93,28 +97,13 @@ function App() {
             >
               Home
             </button>
-            <button
-              onClick={() => { trackButtonClick('Checklist Navigation'); setView("checklist"); }}
-              style={{
-                backgroundColor: view === "checklist" ? '#dc3545' : 'transparent',
-                color: 'white',
-                border: '1px solid white',
-                borderRadius: '5px',
-                padding: '8px 16px',
-                margin: '0 5px',
-                cursor: 'pointer',
-                fontSize: '16px',
-                transition: 'background-color 0.3s'
-              }}
-            >
-              Checklist
-            </button>
+
             <button
               onClick={() => { trackButtonClick('Alert Navigation'); setView("alert"); }}
               style={{
                 backgroundColor: view === "alert" ? '#dc3545' : 'transparent',
-                color: 'white',
-                border: '1px solid white',
+                color: colors.navText,
+                border: '1px solid ' + colors.navText,
                 borderRadius: '5px',
                 padding: '8px 16px',
                 margin: '0 5px',
@@ -129,8 +118,8 @@ function App() {
               onClick={() => { trackButtonClick('Contacts Navigation'); setView("contacts"); }}
               style={{
                 backgroundColor: view === "contacts" ? '#dc3545' : 'transparent',
-                color: 'white',
-                border: '1px solid white',
+                color: colors.navText,
+                border: '1px solid ' + colors.navText,
                 borderRadius: '5px',
                 padding: '8px 16px',
                 margin: '0 5px',
@@ -145,8 +134,8 @@ function App() {
               onClick={() => { trackButtonClick('Map Navigation'); setView("map"); }}
               style={{
                 backgroundColor: view === "map" ? '#dc3545' : 'transparent',
-                color: 'white',
-                border: '1px solid white',
+                color: colors.navText,
+                border: '1px solid ' + colors.navText,
                 borderRadius: '5px',
                 padding: '8px 16px',
                 margin: '0 5px',
@@ -161,8 +150,8 @@ function App() {
               onClick={() => { trackButtonClick('AI Navigation'); setView("ai"); }}
               style={{
                 backgroundColor: view === "ai" ? '#dc3545' : 'transparent',
-                color: 'white',
-                border: '1px solid white',
+                color: colors.navText,
+                border: '1px solid ' + colors.navText,
                 borderRadius: '5px',
                 padding: '8px 16px',
                 margin: '0 5px',
@@ -177,8 +166,8 @@ function App() {
               onClick={() => { trackButtonClick('Weather Navigation'); setView("weather"); }}
               style={{
                 backgroundColor: view === "weather" ? '#dc3545' : 'transparent',
-                color: 'white',
-                border: '1px solid white',
+                color: colors.navText,
+                border: '1px solid ' + colors.navText,
                 borderRadius: '5px',
                 padding: '8px 16px',
                 margin: '0 5px',
@@ -193,8 +182,8 @@ function App() {
               onClick={() => { trackButtonClick('Drill Analytics Navigation'); setView("drill"); }}
               style={{
                 backgroundColor: view === "drill" ? '#dc3545' : 'transparent',
-                color: 'white',
-                border: '1px solid white',
+                color: colors.navText,
+                border: '1px solid ' + colors.navText,
                 borderRadius: '5px',
                 padding: '8px 16px',
                 margin: '0 5px',
@@ -204,6 +193,24 @@ function App() {
               }}
             >
               Drill Analytics
+            </button>
+            <button
+              onClick={toggleTheme}
+              style={{
+                backgroundColor: 'transparent',
+                color: colors.navText,
+                border: '1px solid ' + colors.navText,
+                borderRadius: '5px',
+                padding: '8px 16px',
+                margin: '0 5px',
+                cursor: 'pointer',
+                fontSize: '16px',
+                transition: 'background-color 0.3s'
+              }}
+              aria-label="Toggle dark mode"
+              title="Toggle dark mode"
+            >
+              {isDarkMode ? 'Light Mode' : 'Dark Mode'}
             </button>
           </div>
         </div>
@@ -216,6 +223,14 @@ function App() {
         {renderView()}
       </main>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

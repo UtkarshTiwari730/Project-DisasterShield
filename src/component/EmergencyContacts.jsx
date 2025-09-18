@@ -2,11 +2,16 @@ import React from "react";
 
 function EmergencyContacts({ setView }) {
   const contacts = [
-    { name: "Police", number: "100", icon: "" },
-    { name: "Fire Department", number: "101", icon: "" },
-    { name: "Ambulance", number: "102", icon: "" },
-    { name: "Disaster Management", number: "108", icon: "" },
-    { name: "National Emergency", number: "112", icon: "" },
+    { name: "Police", number: "100", icon: "🚔" },
+    { name: "Fire Department", number: "101", icon: "🚒" },
+    { name: "Ambulance", number: "102", icon: "🚑" },
+    { name: "Disaster Management", number: "108", icon: "🌪️" },
+    { name: "National Emergency", number: "112", icon: "🚨" },
+    { name: "Coast Guard", number: "911", icon: "⛵" },
+    { name: "Poison Control", number: "1-800-222-1222", icon: "☠️" },
+    { name: "Gas Leak Emergency", number: "911", icon: "💥" },
+    { name: "Electric Emergency", number: "911", icon: "⚡" },
+    { name: "Animal Control", number: "911", icon: "🐾" },
   ];
 
   const handleCall = (number) => {

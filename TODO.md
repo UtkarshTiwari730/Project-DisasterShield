@@ -1,15 +1,21 @@
-# TODO List for Drill Analytics Page Implementation
+# TODO for Enhancing AIChat Component
 
-## Tasks to Complete:
-- [x] Create DrillAnalytics.jsx component with drill analytics video, disaster survival text, and animations
-- [x] Edit NewsResources.jsx to remove the drill analytics video section
-- [x] Edit App.jsx to add routing for the new DrillAnalytics page
-- [x] Edit Home.jsx to add navigation button/link to access DrillAnalytics page
-- [x] Test the new page for functionality, responsiveness, and UI consistency (Note: Manual testing required - run the app and verify navigation, video playback, animations, and responsiveness)
+Expand disasterOptions with additional realistic disasters (e.g., volcanic eruption, landslide, pandemic, chemical spill)
+Enhance mockResponses with more detailed, varied, and realistic advice, incorporating tips from DrillAnalytics
+Add state for filtered suggestions and selected suggestion index
+Implement onChange handler for input to filter disasterOptions based on user input
+Add dropdown UI below input field to display matching suggestions
+Implement keyboard event handlers for navigation (arrow keys to select, Enter to choose, Escape to close)
+Update handleSend to handle suggestion selection and auto-fill input
+Style the dropdown for consistency with the component's design
+Test auto-suggest functionality with typing and keyboard navigation
 
-## Notes:
-- Ensure the video iframe is properly embedded in DrillAnalytics.jsx
-- Add informative text on different disaster survival options
-- Implement CSS animations for visual appeal
-- Maintain consistent styling with the rest of the app
-- Verify navigation works correctly from Home page
+# TODO for Modifying DrillAnalytics to Mock Drill
+
+Change main h1 title from "Drill Analytics" to "Mock Analytics"
+Change video h2 from "Drill Analytics Video" to "Mock Analytics Video"
+Change survival options h2 from "Disaster Survival Options" to "Mock Analytics Scenarios"
+Add "Start Mock Drill" button to each disaster card with alert action
+Rename component function and export to "MockDrill"
+Integrate MockDrill into Home page after NewsResources
+Test component renders with new titles and buttons work

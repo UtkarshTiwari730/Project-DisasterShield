@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
-function DrillAnalytics({ setView }) {
+function MockDrill({ setView }) {
+  const [earthquakeAnimation, setEarthquakeAnimation] = useState(false);
+  const [floodAnimation, setFloodAnimation] = useState(false);
+  const [hurricaneAnimation, setHurricaneAnimation] = useState(false);
+  const [wildfireAnimation, setWildfireAnimation] = useState(false);
+
   const survivalOptions = [
     {
       disaster: "Earthquake",
@@ -57,7 +62,7 @@ function DrillAnalytics({ setView }) {
             fontSize: '36px',
             margin: 0
           }}>
-            Drill Analytics
+            Mock Analytics
           </h1>
           <button
             onClick={() => setView("home")}
@@ -87,7 +92,7 @@ function DrillAnalytics({ setView }) {
             marginBottom: '20px',
             fontSize: '28px'
           }}>
-            Drill Analytics Video
+            Mock Analytics Video
           </h2>
           <div style={{
             position: 'relative',
@@ -143,7 +148,7 @@ function DrillAnalytics({ setView }) {
             fontSize: '28px',
             textAlign: 'center'
           }}>
-            Disaster Survival Options
+            Mock Analytics Scenarios
           </h2>
           <div style={{
             display: 'grid',
@@ -192,31 +197,270 @@ function DrillAnalytics({ setView }) {
                     </li>
                   ))}
                 </ul>
+                <button
+                  onClick={() => {
+                    if (option.disaster === "Earthquake") {
+                      setEarthquakeAnimation(true);
+                    } else if (option.disaster === "Flood") {
+                      setFloodAnimation(true);
+                    } else if (option.disaster === "Hurricane") {
+                      setHurricaneAnimation(true);
+                    } else if (option.disaster === "Wildfire") {
+                      setWildfireAnimation(true);
+                    } else {
+                      alert(`Starting ${option.disaster} Mock Drill`);
+                    }
+                  }}
+                  style={{
+                    backgroundColor: '#28a745',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    padding: '10px 15px',
+                    cursor: 'pointer',
+                    fontSize: '16px',
+                    marginTop: '15px'
+                  }}
+                >
+                  Start Mock Drill
+                </button>
               </div>
             ))}
           </div>
         </div>
+
+        {earthquakeAnimation && (
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000
+          }}>
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              padding: '20px',
+              maxWidth: '80%',
+              maxHeight: '80%',
+              overflow: 'auto',
+              position: 'relative'
+            }}>
+              <button
+                onClick={() => setEarthquakeAnimation(false)}
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  backgroundColor: '#ff4757',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '30px',
+                  height: '30px',
+                  cursor: 'pointer',
+                  fontSize: '16px'
+                }}
+              >
+                ×
+              </button>
+              <img
+                src="https://c8.alamy.com/comp/2YET1MP/evacuation-drill-2YET1MP.jpg"
+                alt="Evacuation Drill"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxHeight: '70vh'
+                }}
+              />
+            </div>
+          </div>
+        )}
+
+        {floodAnimation && (
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000
+          }}>
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              padding: '20px',
+              maxWidth: '80%',
+              maxHeight: '80%',
+              overflow: 'auto',
+              position: 'relative'
+            }}>
+              <button
+                onClick={() => setFloodAnimation(false)}
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  backgroundColor: '#ff4757',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '30px',
+                  height: '30px',
+                  cursor: 'pointer',
+                  fontSize: '16px'
+                }}
+              >
+                ×
+              </button>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHlfHmeGPELoK4WgXaqZHfz3kUVxby0ypeSw&s"
+                alt="Flood Drill"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxHeight: '70vh'
+                }}
+              />
+            </div>
+          </div>
+        )}
+
+        {hurricaneAnimation && (
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000
+          }}>
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              padding: '20px',
+              maxWidth: '80%',
+              maxHeight: '80%',
+              overflow: 'auto',
+              position: 'relative'
+            }}>
+              <button
+                onClick={() => setHurricaneAnimation(false)}
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  backgroundColor: '#ff4757',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '30px',
+                  height: '30px',
+                  cursor: 'pointer',
+                  fontSize: '16px'
+                }}
+              >
+                ×
+              </button>
+              <img
+                src="https://i.ytimg.com/vi/-uMpndVMPuc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAjditn1E-XV8Z4rwUa1Jx7kd-r0Q"
+                alt="Hurricane Drill"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxHeight: '70vh'
+                }}
+              />
+            </div>
+          </div>
+        )}
+
+        {wildfireAnimation && (
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000
+          }}>
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              padding: '20px',
+              maxWidth: '80%',
+              maxHeight: '80%',
+              overflow: 'auto',
+              position: 'relative'
+            }}>
+              <button
+                onClick={() => setWildfireAnimation(false)}
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  backgroundColor: '#ff4757',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '30px',
+                  height: '30px',
+                  cursor: 'pointer',
+                  fontSize: '16px'
+                }}
+              >
+                ×
+              </button>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaxJJtMj2D99YO0im_6zYTrk4YQM-c2MufRQ&s"
+                alt="Wildfire Drill"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxHeight: '70vh'
+                }}
+              />
+            </div>
+          </div>
+        )}
+
+        <style>
+          {`
+            @keyframes fadeInUp {
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            @keyframes slideInLeft {
+              to {
+                opacity: 1;
+                transform: translateX(0);
+              }
+            }
+          `}
+        </style>
       </div>
-
-      <style>
-        {`
-          @keyframes fadeInUp {
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          @keyframes slideInLeft {
-            to {
-              opacity: 1;
-              transform: translateX(0);
-            }
-          }
-        `}
-      </style>
     </div>
   );
 }
 
-export default DrillAnalytics;
+export default MockDrill;
