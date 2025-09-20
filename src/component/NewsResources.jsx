@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTheme } from "../ThemeContext.jsx";
 
 const mockResources = [
   { id: 1, title: "Disaster Preparedness Guide", url: "https://www.ready.gov/" },
@@ -10,8 +11,11 @@ const mockResources = [
 ];
 
 function NewsResources() {
+  const { colors } = useTheme();
   const [news, setNews] = useState([]);
   const [loadingNews, setLoadingNews] = useState(true);
+  const [isNewsOpen, setIsNewsOpen] = useState(true);
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
 
   useEffect(() => {
     // For demo, using mock news data. Replace with real API fetch if available.
@@ -42,35 +46,161 @@ function NewsResources() {
     fetchNews();
   }, []);
 
+  const toggleNews = () => setIsNewsOpen(!isNewsOpen);
+  const toggleResources = () => setIsResourcesOpen(!isResourcesOpen);
+
   return (
-    <div style={{ marginTop: "40px", textAlign: "left" }}>
-      <h2 style={{ color: "gray", marginBottom: "20px" }}> Real-Time News</h2>
-      {loadingNews ? (
-        <p style={{ color: "Black" }}>Loading news...</p>
-      ) : (
-        <ul style={{ listStyle: "none", padding: 0, color: "white" }}>
-          {news.map((item) => (
-            <li key={item.id} style={{ marginBottom: "10px" }}>
-              <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ color: "#ffd700" }}>
-                {item.title}
-              </a>{" "}
-              <span style={{ fontSize: "12px", color: "#723131ff" }}>({item.source})</span>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))',
+      gap: 'clamp(1.5rem, 5vw, 1.875rem)',
+      justifyItems: 'center',
+      marginTop: 'clamp(2rem, 6vw, 2.5rem)'
+    }}>
+      {/* News Feed Box */}
+      <div style={{
+        backgroundColor: 'white',
+        borderRadius: '15px',
+        boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
+        padding: 'clamp(2rem, 6vw, 2.5rem)',
+        maxWidth: '350px',
+        width: '100%',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+        position: 'relative',
+        overflow: 'hidden'
+      }}
+      onClick={toggleNews}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translateY(-10px) scale(1.05)';
+        e.currentTarget.style.boxShadow = '0 15px 30px rgba(0,0,0,0.3)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'translateY(0) scale(1)';
+        e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
+      }}
+      >
+        <div style={{
+          position: 'absolute',
+          top: '-50%',
+          left: '-50%',
+          width: '200%',
+          height: '200%',
+          background: 'linear-gradient(45deg, #6f42c1, #5a32a3)',
+          opacity: 0.1,
+          transform: 'rotate(45deg)',
+          transition: 'all 0.3s'
+        }}></div>
 
-      <h2 style={{ color: "gray", marginTop: "40px", marginBottom: "20px" }}> Resources</h2>
-      <ul style={{ listStyle: "none", padding: 0, color: "Black" }}>
-        {mockResources.map((res) => (
-          <li key={res.id} style={{ marginBottom: "10px" }}>
-            <a href={res.url} target="_blank" rel="noopener noreferrer" style={{ color: "#ffd700" }}>
-              {res.title}
-            </a>
-          </li>
-        ))}
-      </ul>
+        <h3 style={{
+          color: '#6f42c1',
+          marginBottom: 'clamp(0.75rem, 3vw, 1rem)',
+          fontSize: 'clamp(1.5rem, 5vw, 1.75rem)',
+          position: 'relative',
+          zIndex: 1,
+          fontWeight: '700'
+        }}>
+          Real-Time News
+        </h3>
 
+        <p style={{
+          color: '#666',
+          fontSize: 'clamp(0.9rem, 4vw, 1rem)',
+          position: 'relative',
+          zIndex: 1,
+          lineHeight: '1.5'
+        }}>
+          Stay updated with the latest news and alerts related to disasters and emergencies.
+        </p>
+
+        {isNewsOpen && (
+          <div style={{
+            marginTop: 'clamp(1rem, 3vw, 1.25rem)',
+            position: 'relative',
+            zIndex: 1,
+            animation: "fadeIn 0.3s ease"
+          }}>
+            {loadingNews ? (
+              <p style={{ color: '#666', fontSize: 'clamp(0.9rem, 4vw, 1rem)' }}>Loading news...</p>
+            ) : (
+              <ul style={{ listStyle: "none", padding: 0, color: '#666' }}>
+                {news.map((item) => (
+                  <li key={item.id} style={{ marginBottom: "10px" }}>
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ color: "#ffd700", textDecoration: 'none' }}>
+                      {item.title}
+                    </a>{" "}
+                    <span style={{ fontSize: "12px", opacity: 0.7 }}>({item.source})</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Resources Box */}
+      <div style={{
+        backgroundColor: 'white',
+        borderRadius: '15px',
+        boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
+        padding: 'clamp(2rem, 6vw, 2.5rem)',
+        maxWidth: '350px',
+        width: '100%',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+        position: 'relative',
+        overflow: 'hidden'
+      }}
+      onClick={toggleResources}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translateY(-10px) scale(1.05)';
+        e.currentTarget.style.boxShadow = '0 15px 30px rgba(0,0,0,0.3)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'translateY(0) scale(1)';
+        e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
+      }}
+      >
+        <h3 style={{
+          color: '#1976D2',
+          marginBottom: 'clamp(0.75rem, 3vw, 1rem)',
+          fontSize: 'clamp(1.5rem, 5vw, 1.75rem)',
+          position: 'relative',
+          zIndex: 1,
+          fontWeight: '700'
+        }}>
+          Resources
+        </h3>
+
+        <p style={{
+          color: '#212529',
+          fontSize: 'clamp(0.9rem, 4vw, 1rem)',
+          position: 'relative',
+          zIndex: 1,
+          lineHeight: '1.5'
+        }}>
+          Access guides, manuals, and helpful resources for disaster preparedness and response.
+        </p>
+
+        {isResourcesOpen && (
+          <div style={{
+            marginTop: 'clamp(1rem, 3vw, 1.25rem)',
+            position: 'relative',
+            zIndex: 1,
+            animation: "fadeIn 0.3s ease"
+          }}>
+            <ul style={{ listStyle: "none", padding: 0, color: '#212529' }}>
+              {mockResources.map((res) => (
+                <li key={res.id} style={{ marginBottom: "10px" }}>
+                  <a href={res.url} target="_blank" rel="noopener noreferrer" style={{ color: "#ffd700", textDecoration: 'none' }}>
+                    {res.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
