@@ -12,6 +12,21 @@ function AIChat({ setView }) {
 
   const disasterOptions = ["earthquake", "flood", "fire", "hurricane", "tornado", "tsunami", "wildfire", "blizzard", "preparedness", "protection", "volcanic eruption", "landslide", "pandemic", "chemical spill", "drought", "heatwave"];
 
+  // Function to detect if text contains Hindi characters
+  const detectHindi = (text) => {
+    // Devanagari Unicode range: \u0900-\u097F
+    const hindiRegex = /[\u0900-\u097F]/;
+    return hindiRegex.test(text);
+  };
+
+  // Function to detect language based on text content
+  const detectLanguage = (text) => {
+    if (detectHindi(text)) {
+      return "hi";
+    }
+    return "en";
+  };
+
   const mockResponses = {
     "earthquake": {
       en: " During an earthquake: DROP, COVER, and HOLD ON under a sturdy table or desk until shaking stops. Stay away from windows, outside doors, and walls. If outdoors, move to an open area away from buildings, trees, and power lines. Secure heavy furniture, prepare an emergency kit, and know your safe spots. Aftershocks can occur, so stay alert and follow local authorities for evacuation if needed. Stay safe! 🛡️",
@@ -54,12 +69,16 @@ function AIChat({ setView }) {
     setMessages(prev => [...prev, userMessage]);
     trackButtonClick('AI Chat Send Message');
 
-    // Generate mock response
+    // Detect language from user input and update language state
+    const detectedLanguage = detectLanguage(messageText);
+    setLanguage(detectedLanguage);
+
+    // Generate mock response using detected language
     const lowerInput = messageText.toLowerCase();
-    let response = mockResponses.default[language];
+    let response = mockResponses.default[detectedLanguage];
     for (const key in mockResponses) {
       if (lowerInput.includes(key)) {
-        response = mockResponses[key][language];
+        response = mockResponses[key][detectedLanguage];
         break;
       }
     }

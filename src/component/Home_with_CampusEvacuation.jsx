@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import EvacuationCard from "./EvacuationCard";
-
+import CampusEvacuationCard from "./CampusEvacuationCard.jsx";
 
 function Home({ setView }) {
   const [user, setUser] = useState(null);
@@ -434,6 +433,9 @@ function Home({ setView }) {
               Stay updated with real-time news and access essential disaster preparedness resources.
             </p>
           </div>
+
+          {/* Campus Evacuation Card */}
+          <CampusEvacuationCard setView={setView} />
         </div>
       </div>
     </div>

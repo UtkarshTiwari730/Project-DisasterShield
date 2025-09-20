@@ -113,29 +113,26 @@ function NewsResources() {
           Stay updated with the latest news and alerts related to disasters and emergencies.
         </p>
 
-        {isNewsOpen && (
-          <div style={{
-            marginTop: 'clamp(1rem, 3vw, 1.25rem)',
-            position: 'relative',
-            zIndex: 1,
-            animation: "fadeIn 0.3s ease"
-          }}>
-            {loadingNews ? (
-              <p style={{ color: '#666', fontSize: 'clamp(0.9rem, 4vw, 1rem)' }}>Loading news...</p>
-            ) : (
-              <ul style={{ listStyle: "none", padding: 0, color: '#666' }}>
-                {news.map((item) => (
-                  <li key={item.id} style={{ marginBottom: "10px" }}>
-                    <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ color: "#ffd700", textDecoration: 'none' }}>
-                      {item.title}
-                    </a>{" "}
-                    <span style={{ fontSize: "12px", opacity: 0.7 }}>({item.source})</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        )}
+        <div style={{
+          marginTop: 'clamp(1rem, 3vw, 1.25rem)',
+          position: 'relative',
+          zIndex: 1
+        }}>
+          {loadingNews ? (
+            <p style={{ color: '#666', fontSize: 'clamp(0.9rem, 4vw, 1rem)' }}>Loading news...</p>
+          ) : (
+            <ul style={{ listStyle: "none", padding: 0, color: '#666' }}>
+              {news.map((item) => (
+                <li key={item.id} style={{ marginBottom: "10px" }}>
+                  <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ color: "#ffd700", textDecoration: 'none' }}>
+                    {item.title}
+                  </a>{" "}
+                  <span style={{ fontSize: "12px", opacity: 0.7 }}>({item.source})</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
 
       {/* Resources Box */}
@@ -182,24 +179,21 @@ function NewsResources() {
           Access guides, manuals, and helpful resources for disaster preparedness and response.
         </p>
 
-        {isResourcesOpen && (
-          <div style={{
-            marginTop: 'clamp(1rem, 3vw, 1.25rem)',
-            position: 'relative',
-            zIndex: 1,
-            animation: "fadeIn 0.3s ease"
-          }}>
-            <ul style={{ listStyle: "none", padding: 0, color: '#212529' }}>
-              {mockResources.map((res) => (
-                <li key={res.id} style={{ marginBottom: "10px" }}>
-                  <a href={res.url} target="_blank" rel="noopener noreferrer" style={{ color: "#ffd700", textDecoration: 'none' }}>
-                    {res.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <div style={{
+          marginTop: 'clamp(1rem, 3vw, 1.25rem)',
+          position: 'relative',
+          zIndex: 1
+        }}>
+          <ul style={{ listStyle: "none", padding: 0, color: '#212529' }}>
+            {mockResources.map((res) => (
+              <li key={res.id} style={{ marginBottom: "10px" }}>
+                <a href={res.url} target="_blank" rel="noopener noreferrer" style={{ color: "#ffd700", textDecoration: 'none' }}>
+                  {res.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

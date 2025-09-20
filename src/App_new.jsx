@@ -6,13 +6,11 @@ import Map from "./component/Map.jsx";
 import AIChat from "./component/AIChat.jsx";
 import Weather from "./component/Weather.jsx";
 import MockDrill from "./component/MockDrill.jsx";
-import Resources from "./component/NewsResources.jsx";
-
 import { trackPageView, trackButtonClick } from "./analytics.js";
 import { ThemeProvider, useTheme } from "./ThemeContext.jsx";
 
 function AppContent() {
-  const { colors } = useTheme();
+  const { isDarkMode, toggleTheme, colors } = useTheme();
   const [view, setView] = useState("home");
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -50,7 +48,6 @@ function AppContent() {
     if (view === "ai" && isLoggedIn) return <AIChat setView={setView} />;
     if (view === "weather" && isLoggedIn) return <Weather setView={setView} />;
     if (view === "drill") return <MockDrill setView={setView} />;
-    if (view === "resources") return <Resources setView={setView} />;
     // if not logged in and trying to access ai or weather, fallback to home
     if ((view === "ai" || view === "weather") && !isLoggedIn) return <Home setView={setView} />;
   };
@@ -198,9 +195,9 @@ function AppContent() {
               Drill Analytics
             </button>
             <button
-              onClick={() => { trackButtonClick('Resources Navigation'); setView("resources"); }}
+              onClick={toggleTheme}
               style={{
-                backgroundColor: view === "resources" ? '#dc3545' : 'transparent',
+                backgroundColor: 'transparent',
                 color: colors.navText,
                 border: '1px solid ' + colors.navText,
                 borderRadius: '5px',
@@ -210,10 +207,11 @@ function AppContent() {
                 fontSize: '16px',
                 transition: 'background-color 0.3s'
               }}
+              aria-label="Toggle dark mode"
+              title="Toggle dark mode"
             >
-              Resources
+              {isDarkMode ? 'Light Mode' : 'Dark Mode'}
             </button>
-
           </div>
         </div>
       </nav>

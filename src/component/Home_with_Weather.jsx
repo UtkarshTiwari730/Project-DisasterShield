@@ -1,0 +1,200 @@
+import React, { useState, useEffect } from "react";
+
+
+function Home({ setView }) {
+  const [user, setUser] = useState(null);
+  const [loginForm, setLoginForm] = useState({ username: '', password: '' });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('disasterUser');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (loginForm.username && loginForm.password) {
+      const userData = { username: loginForm.username, role: 'Emergency Responder' };
+      setUser(userData);
+      setIsLoggedIn(true);
+      localStorage.setItem('disasterUser', JSON.stringify(userData));
+    }
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    setIsLoggedIn(false);
+    localStorage.removeItem('disasterUser');
+    setView("home");
+  };
+
+  if (!isLoggedIn) {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        backgroundColor: '#f8f9fa',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 'clamp(1rem, 5vw, 2rem)'
+      }}>
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '15px',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+          padding: 'clamp(2rem, 8vw, 2.5rem)',
+          maxWidth: 'min(90vw, 400px)',
+          width: '100%',
+          textAlign: 'center'
+        }}>
+          <h1 style={{
+            color: '#1a237e',
+            marginBottom: 'clamp(1.5rem, 5vw, 2rem)',
+            fontSize: 'clamp(1.5rem, 6vw, 1.75rem)',
+            fontWeight: '700',
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+          }}>
+             Disaster Management
+          </h1>
+          <form onSubmit={handleLogin}>
+            <input
+              type="text"
+              placeholder="Username"
+              value={loginForm.username}
+              onChange={(e) => setLoginForm({...loginForm, username: e.target.value})}
+              style={{
+                width: '100%',
+                padding: 'clamp(0.75rem, 3vw, 0.75rem)',
+                marginBottom: 'clamp(0.75rem, 3vw, 1rem)',
+                border: '2px solid #ddd',
+                borderRadius: '8px',
+                fontSize: 'clamp(0.9rem, 4vw, 1rem)',
+                boxSizing: 'border-box'
+              }}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={loginForm.password}
+              onChange={(e) => setLoginForm({...loginForm, password: e.target.value})}
+              style={{
+                width: '100%',
+                padding: 'clamp(0.75rem, 3vw, 0.75rem)',
+                marginBottom: 'clamp(1rem, 4vw, 1.25rem)',
+                border: '2px solid #ddd',
+                borderRadius: '8px',
+                fontSize: 'clamp(0.9rem, 4vw, 1rem)',
+                boxSizing: 'border-box'
+              }}
+              required
+            />
+            <button
+              type="submit"
+              style={{
+                width: '100%',
+                backgroundColor: '#1976D2',
+                color: 'white',
+                border: 'none',
+                borderRadius: '8px',
+                padding: 'clamp(0.75rem, 3vw, 0.75rem)',
+                fontSize: 'clamp(1rem, 4.5vw, 1.125rem)',
+                fontWeight: '600',
+                cursor: 'pointer',
+                boxShadow: '0 4px 8px rgba(25, 118, 210, 0.4)',
+                transition: 'background-color 0.3s ease'
+              }}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#1565C0'}
+              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#1976D2'}
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{
+      minHeight: '100vh',
+      backgroundColor: '#f8f9fa',
+      padding: 'clamp(2rem, 8vw, 2.5rem) clamp(1rem, 4vw, 1.25rem)'
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        textAlign: 'center'
+      }}>
+        <div style={{
+          backgroundColor: '#001f3f',
+          padding: 'clamp(1rem, 4vw, 1.25rem)',
+          borderRadius: '8px',
+          marginBottom: 'clamp(2rem, 6vw, 2.5rem)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
+          gap: window.innerWidth <= 768 ? '1rem' : '0'
+        }}>
+          <h1 style={{
+            color: 'white',
+            fontSize: 'clamp(1.5rem, 6vw, 2.25rem)',
+            margin: 0,
+            fontWeight: '700',
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+          }}>
+            Welcome, {user?.username}!
+          </h1>
+          <button
+            onClick={handleLogout}
+            style={{
+              backgroundColor: '#E63946',
+              color: 'white',
+              border: 'none',
+              borderRadius: '8px',
+              padding: 'clamp(0.5rem, 2vw, 0.5rem) clamp(0.75rem, 3vw, 1rem)',
+              cursor: 'pointer',
+              fontSize: 'clamp(0.8rem, 3.5vw, 0.875rem)',
+              fontWeight: '600',
+              boxShadow: '0 4px 8px rgba(230, 57, 70, 0.4)',
+              transition: 'background-color 0.3s ease'
+            }}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = '#d32f2f'}
+            onMouseLeave={e => e.currentTarget.style.backgroundColor = '#E63946'}
+          >
+            Logout
+          </button>
+        </div>
+        <p style={{
+          fontSize: 'clamp(1rem, 4.5vw, 1.125rem)',
+          color: '#1a237e',
+          marginBottom: 'clamp(2rem, 6vw, 2.5rem)',
+          maxWidth: '600px',
+          margin: '0 auto clamp(2rem, 6vw, 2.5rem)',
+          fontWeight: '500',
+          fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+          padding: '0 clamp(0.5rem, 2vw, 1rem)'
+        }}>
+          <b>Stay prepared and informed with our comprehensive disaster management tools.
+          Send alerts and coordinate responses effectively.</b>
+        </p>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))',
+          gap: 'clamp(1.5rem, 5vw, 1.875rem)',
+          justifyItems: 'center'
+        }}>
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '15px',
+            boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
+            padding: 'clamp(2rem, 6vw, 2.5rem)',
+            maxWidth: '350px',
+            width: '100%',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            position: 'relative',

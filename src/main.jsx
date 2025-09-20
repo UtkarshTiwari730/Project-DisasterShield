@@ -5,7 +5,7 @@ import './index.css'
 import { initGA } from './analytics.js'
 
 // Initialize Google Analytics (replace with your actual GA4 Measurement ID)
-initGA('GA_MEASUREMENT_ID');
+initGA('G-XXXXXXXXXX');
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
