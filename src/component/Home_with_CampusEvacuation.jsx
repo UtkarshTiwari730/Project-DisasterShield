@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CampusEvacuationCard from "./CampusEvacuationCard.jsx";
+import HomeEvacuationCard from "./HomeEvacuationCard.jsx";
 
 function Home({ setView }) {
   const [user, setUser] = useState(null);

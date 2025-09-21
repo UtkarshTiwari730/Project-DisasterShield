@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+
 import EvacuationCard from "./EvacuationCard";
+import CampusEvacuationCard from "./CampusEvacuationCard";
 
 
 function Home({ setView }) {
@@ -231,6 +233,7 @@ function Home({ setView }) {
               Quickly send emergency alerts to coordinate responses and inform relevant parties.
             </p>
           </div>
+          <CampusEvacuationCard setView={setView} />
           <div style={{
             backgroundColor: 'white',
             borderRadius: '15px',

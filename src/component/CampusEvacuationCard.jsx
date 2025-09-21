@@ -43,7 +43,7 @@ function CampusEvacuationCard({ setView }) {
         zIndex: 1,
         fontWeight: '700'
       }}>
-        🏫 Campus Evacuation System
+        Campus Evacuation System
       </h3>
       <p style={{
         color: '#666',
@@ -52,7 +52,7 @@ function CampusEvacuationCard({ setView }) {
         zIndex: 1,
         lineHeight: '1.5'
       }}>
-        Advanced evacuation system with AI-powered routing, real-time student tracking, and automated emergency protocols for educational institutions.
+         AI-powered routing,real-time student tracking,and automated emergency protocols for School and colleges.
       </p>
     </div>
   );

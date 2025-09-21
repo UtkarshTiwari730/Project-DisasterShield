@@ -3,44 +3,44 @@ import React from "react";
 function CampusEvacuation({ setView }) {
   const evacuationFeatures = [
     {
-      title: "🔍 Smart Student Tracking",
+      title: " Smart Student Tracking",
       description: "AI-powered system to track student locations during evacuation",
       details: "Real-time GPS tracking with automated roll-call verification"
     },
     {
-      title: "🚨 Intelligent Alert System",
+      title: " Intelligent Alert System",
       description: "Automated emergency notifications via multiple channels",
       details: "SMS, app notifications, and campus-wide speaker systems"
     },
     {
-      title: "📍 Dynamic Assembly Points",
+      title: " Dynamic Assembly Points",
       description: "AI-optimized evacuation routes based on real-time conditions",
       details: "Routes adjust based on fire location, wind direction, and crowd density"
     },
     {
-      title: "👥 Zone-Based Evacuation",
+      title: " Zone-Based Evacuation",
       description: "Segmented evacuation zones for different building areas",
       details: "Classroom zones, laboratory zones, and administrative zones"
     },
     {
-      title: "📊 Real-Time Analytics",
+      title: " Real-Time Analytics",
       description: "Live monitoring of evacuation progress and bottlenecks",
       details: "Heat maps, timing analysis, and bottleneck identification"
     },
     {
-      title: "🔄 Automated Protocols",
+      title: " Automated Protocols",
       description: "Pre-programmed response sequences for different emergency types",
       details: "Fire, earthquake, chemical spill, and active threat protocols"
     }
   ];
 
   const emergencyContacts = [
-    { name: "Campus Security", number: "1001", icon: "🛡️" },
-    { name: "Medical Emergency", number: "1002", icon: "🏥" },
-    { name: "Fire Emergency", number: "1003", icon: "🚒" },
-    { name: "Evacuation Coordinator", number: "1004", icon: "📞" },
-    { name: "Student Counseling", number: "1005", icon: "💬" },
-    { name: "Parent Notification", number: "1006", icon: "👨‍👩‍👧‍👦" }
+    { name: "Campus Security", number: "1001", icon: "" },
+    { name: "Medical Emergency", number: "1002", icon: "" },
+    { name: "Fire Emergency", number: "1003", icon: "" },
+    { name: "Evacuation Coordinator", number: "1004", icon: "" },
+    { name: "Student Counseling", number: "1005", icon: "" },
+    { name: "Parent Notification", number: "1006", icon: "" }
   ];
 
   const handleCall = (number) => {
@@ -84,7 +84,7 @@ function CampusEvacuation({ setView }) {
           fontSize: '2.5rem',
           fontWeight: '700'
         }}>
-          🏫 Smart Campus Evacuation System
+           Smart Campus Evacuation System
         </h1>
 
         <p style={{
@@ -95,8 +95,8 @@ function CampusEvacuation({ setView }) {
           maxWidth: '800px',
           margin: '0 auto 40px'
         }}>
-          Advanced evacuation system designed specifically for educational institutions with AI-powered routing,
-          real-time student tracking, and automated emergency protocols.
+           AI-powered evacuation system for educational institutions with smart routing, 
+           real-time student tracking, and automated emergency protocols.
         </p>
 
         {/* Key Features Grid */}
@@ -106,7 +106,7 @@ function CampusEvacuation({ setView }) {
           marginBottom: '30px',
           fontSize: '2rem'
         }}>
-          🚀 Key Features
+           Key Features
         </h2>
 
         <div style={{
@@ -160,7 +160,7 @@ function CampusEvacuation({ setView }) {
           marginBottom: '30px',
           fontSize: '2rem'
         }}>
-          📞 Emergency Contacts
+           Emergency Contacts
         </h2>
 
         <div style={{
@@ -252,7 +252,7 @@ function CampusEvacuation({ setView }) {
           marginBottom: '30px',
           fontSize: '2rem'
         }}>
-          📋 Standard Evacuation Procedures
+           Standard Evacuation Procedures
         </h2>
 
         <div style={{
@@ -273,7 +273,7 @@ function CampusEvacuation({ setView }) {
                 marginBottom: '15px',
                 fontSize: '1.3rem'
               }}>
-                🚨 Immediate Actions
+                 Immediate Actions
               </h3>
               <ul style={{
                 color: '#495057',
@@ -293,7 +293,7 @@ function CampusEvacuation({ setView }) {
                 marginBottom: '15px',
                 fontSize: '1.3rem'
               }}>
-                📍 Assembly Points
+                 Assembly Points
               </h3>
               <ul style={{
                 color: '#495057',
@@ -313,7 +313,7 @@ function CampusEvacuation({ setView }) {
                 marginBottom: '15px',
                 fontSize: '1.3rem'
               }}>
-                👥 Accountability
+                 Accountability
               </h3>
               <ul style={{
                 color: '#495057',
@@ -336,7 +336,7 @@ function CampusEvacuation({ setView }) {
           marginBottom: '30px',
           fontSize: '2rem'
         }}>
-          🛠️ Quick Access Tools
+           Quick Access Tools
         </h2>
 
         <div style={{
@@ -358,7 +358,7 @@ function CampusEvacuation({ setView }) {
               boxShadow: '0 4px 8px rgba(23, 162, 184, 0.3)'
             }}
           >
-            📱 Download Campus App
+             Download Campus App
           </button>
 
           <button
@@ -374,7 +374,7 @@ function CampusEvacuation({ setView }) {
               boxShadow: '0 4px 8px rgba(40, 167, 69, 0.3)'
             }}
           >
-            📋 View Floor Plans
+             View Floor Plans
           </button>
 
           <button
@@ -390,7 +390,7 @@ function CampusEvacuation({ setView }) {
               boxShadow: '0 4px 8px rgba(253, 126, 20, 0.3)'
             }}
           >
-            🎥 Watch Training Videos
+             Watch Training Videos
           </button>
         </div>
       </div>

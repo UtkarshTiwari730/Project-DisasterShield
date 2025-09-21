@@ -7,6 +7,8 @@ import AIChat from "./component/AIChat.jsx";
 import Weather from "./component/Weather.jsx";
 import MockDrill from "./component/MockDrill.jsx";
 import Resources from "./component/NewsResources.jsx";
+import HomeEvacuation from "./component/HomeEvacuation.jsx";
+import CampusEvacuation from "./component/CampusEvacuation.jsx";
 
 import { trackPageView, trackButtonClick } from "./analytics.js";
 import { ThemeProvider, useTheme } from "./ThemeContext.jsx";
@@ -51,6 +53,8 @@ function AppContent() {
     if (view === "weather" && isLoggedIn) return <Weather setView={setView} />;
     if (view === "drill") return <MockDrill setView={setView} />;
     if (view === "resources") return <Resources setView={setView} />;
+    if (view === "home-evacuation") return <HomeEvacuation setView={setView} />;
+    if (view === "campus-evacuation") return <CampusEvacuation setView={setView} />;
     // if not logged in and trying to access ai or weather, fallback to home
     if ((view === "ai" || view === "weather") && !isLoggedIn) return <Home setView={setView} />;
   };
